@@ -22,13 +22,8 @@ $ grails create-app tutorial_grails3_webapi --profile=rest-api
 ```
 ¡Listo! El esqueleto inicial está creado. Probemos a ejecutarlo.
 ```
-$ ./gradlew bootRun
-:compileJava UP-TO-DATE
-:compileGroovy UP-TO-DATE
-:processResources UP-TO-DATE
-:classes UP-TO-DATE
-:findMainClass
-:bootRun
+$ ./grails run-app
+| Running application...
 Grails application running at http://localhost:8080 in environment: development
 ```
 Ahora podemos acceder en un navegador a http://localhost:8080 y ver que nos muestra el json de ejemplo.
