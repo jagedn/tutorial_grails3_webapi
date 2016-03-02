@@ -17,6 +17,6 @@ $ grails list-profiles
 ```
 Como queremos crear un API rest, rest-api será el perfil indicado para optimizar el esqueleto inicial
 ```
-$ grails create-app tutorial_grails3_weba
+$ grails create-app tutorial_grails3_webapi --profile=rest-api
 | Application created at /home/rafbermudez/tutorial_grails3_webapi
 ```
