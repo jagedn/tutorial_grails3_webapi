@@ -1,15 +1,21 @@
 package tutorial_grails3_webapi
 
-import grails.core.GrailsApplication
-import grails.util.Environment
-import grails.plugins.*
+import gente.Persona
 
-class ApplicationController implements PluginManagerAware {
-
-    GrailsApplication grailsApplication
-    GrailsPluginManager pluginManager
+class ApplicationController{
 
     def index() {
-        [grailsApplication: grailsApplication, pluginManager: pluginManager]
+        
+        //Creamos una persona
+        Persona persona = new Persona(
+            nombre:"Elena",
+            apellidos: "Nito del Bosque",
+            direccion: "Bosque fantasma",
+            telefono: 123456789
+        )
+        
+        //la pasamos como parámetro a la vista
+        // por convención la vista de index() -> index.gson
+        [persona: persona]
     }
 }

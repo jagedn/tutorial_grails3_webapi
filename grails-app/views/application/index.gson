@@ -1,3 +1,13 @@
+
+model{
+    Persona persona
+}
+
 json {
-    message "hola mundo"
+    mensaje "hola ${persona.nombre} ${persona.apellidos}"
+
+    persona {
+        nombre persona.nombre
+        telefono persona.telefono
+    }    
 }
