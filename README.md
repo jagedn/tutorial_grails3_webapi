@@ -20,10 +20,32 @@ Como queremos crear un API rest, rest-api será el perfil indicado para optimiza
 $ grails create-app tutorial_grails3_webapi --profile=rest-api
 | Application created at /home/rafbermudez/tutorial_grails3_webapi
 ```
-¡Listo! El esqueleto inicial está creado. Probemos a ejecutarlo.
+¡Listo! El esqueleto inicial está creado. 
+```
+__ tutorial_grails3_webapi
+   |__ gradle
+   |__ grails-app                   - Código principal de una aplicación grails
+       |__ conf                     
+       |__ controllers              - Controladores y enrutamiento (configuración de urls)
+       |__ domain                   - Clases persistentes (se mapean en BD)
+       |__ i18n
+       |__ init
+       |__ services                 - Servicios de la aplicación (patrón fachada)
+       |__ utils
+       |__ views                    - Aquí creamos las vistas rest (gson, por ejemplo) 
+   |__ src
+       |__ integration-test
+       |__ main                     - Clases groovy o java normales
+       |__ test
+   |__ build.gradle
+   |__ gradle.properties
+   |__ gradlew
+   |__ gradlew.bat
+```
+Probemos a ejecutar la aplicación.
 ```
 $ ./grails run-app
 | Running application...
 Grails application running at http://localhost:8080 in environment: development
 ```
-Ahora podemos acceder en un navegador a http://localhost:8080 y ver que nos muestra el json de ejemplo.
+¡Eureka! Ahora podemos acceder con un navegador a http://localhost:8080 y ver que nos muestra el json de ejemplo.
