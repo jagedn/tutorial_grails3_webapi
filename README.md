@@ -49,3 +49,24 @@ $ ./grails run-app
 Grails application running at http://localhost:8080 in environment: development
 ```
 ¡Eureka! Ahora podemos acceder con un navegador a http://localhost:8080 y ver que nos muestra el json de ejemplo.
+
+## Entendiendo las vistas
+
+En el directorio views, grails ha creado las vistas de errores y una vista de ejemplo en el paquete application: index.gson. Un archivo gson es un template generador de json. Simplifiquemos index.gson a sólo 3 líneas:
+```groovy
+json {
+    mensaje "hola mundo"
+}
+```
+Si ejecutamos la aplicación de nuevo, la salida que nos muestra el navegador es {"mensaje":"hola mundo"}
+
+Vamos a crear nuestra primera clase de dominio. Creamos la clase Persona en el paquete gente. Al crearla, se nos genera tanto la clase como su clase de tests unitarios. Por el momento obviaremos su comportamiento.
+```
+$ grails create-domain-class gente.Persona
+> Configuring > 0/1 projects > root project > Resolving dependencies ':classpath1/1 projects > Resolving dependencies ':agent' > Resolving dependencies 'detache > Resolving dependencies ':runtime' > Resolving dependencies 'detachedConfigura > Resolving dependencies ':console' > Resolving dependencies 'detachedConfigura
+BUILD SUCCESSFUL
+
+Total time: 2.889 secs
+> Resolving dependencies ':testRuntime' > Resolving dependencies 'detachedConfig| Created grails-app/domain/gente/Persona.groovy
+| Created src/test/groovy/gente/PersonaSpec.groovy
+```
