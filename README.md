@@ -1,4 +1,4 @@
-# Mi primera aplicación rest con Grails 3: Spanish tutorial
+# Mi primera aplicación rest con Grails 3
 
 Tutorial de ejemplo, desarrollando una aplicación rest-api con grails 3. Si quieres colaborar u opinar, escríbeme:  [@rafbermudez](http://twitter.com/rafbermudez)
 
@@ -139,4 +139,46 @@ Ejecutamos de nuevo la aplicación y obtenemos el resultado:
 }
 ```
 
-## En construcción ... el viernes... completo
+## Otras formas de construir los json
+
+También podríamos crear las salidas de otra forma, como nos muestra el action elena o el action mapa
+```groovy
+package tutorial_grails3_webapi
+
+import gente.Persona
+import grails.converters.JSON
+
+class ApplicationController{
+    
+    //Creamos una persona
+    Persona persona = new Persona(
+        nombre:"Elena",
+        apellidos: "Nito del Bosque",
+        direccion: "Bosque fantasma",
+        telefono: 123456789
+    )
+    
+
+    //generado con una vista
+    def index() {
+        //la pasamos como parámetro a la vista
+        // por convención la vista de index() -> index.gson
+        [persona: this.persona]
+    }
+    
+    //generado por conversión
+    def elena() {
+        render this.persona as JSON
+    }
+    
+    //generado a partir de un mapa
+    def mapa() {
+        render ([nombre:"Aitor", apellido:"Nillos", numeroDeLaSuerte:7] as JSON)
+    }
+}
+```
+Ejecutemos la aplicación. Tal como está configurado el UrlMappings, http://localhost:8080/application/elena y http://localhost:8080/application/mapa nos mostrará el resultado esperado.
+
+Resumiendo, Grails es superpotente y es idóneo para realizar APIS. Tiene muchísimas facilidades para exponer objetos, podéis echar un ojo en [la sección REST de la documentación oficial](https://grails.github.io/grails-doc/3.1.2/guide/webServices.html).
+
+## En construcción ... el viernes estará completo
