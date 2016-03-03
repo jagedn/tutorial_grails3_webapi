@@ -34,3 +34,5 @@
 
 # build 
 /build
+/.nb-gradle/
+/.gradle
