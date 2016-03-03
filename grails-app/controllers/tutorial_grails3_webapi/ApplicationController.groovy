@@ -1,21 +1,33 @@
 package tutorial_grails3_webapi
 
 import gente.Persona
+import grails.converters.JSON
 
 class ApplicationController{
+    
+    //Creamos una persona
+    Persona persona = new Persona(
+        nombre:"Elena",
+        apellidos: "Nito del Bosque",
+        direccion: "Bosque fantasma",
+        telefono: 123456789
+    )
+    
 
+    //generado con una vista
     def index() {
-        
-        //Creamos una persona
-        Persona persona = new Persona(
-            nombre:"Elena",
-            apellidos: "Nito del Bosque",
-            direccion: "Bosque fantasma",
-            telefono: 123456789
-        )
-        
         //la pasamos como parámetro a la vista
         // por convención la vista de index() -> index.gson
-        [persona: persona]
+        [persona: this.persona]
+    }
+    
+    //generado por conversión
+    def elena() {
+        render this.persona as JSON
+    }
+    
+    //generado a partir de un mapa
+    def mapa() {
+        render ([nombre:"Aitor", apellido:"Nillos", numeroDeLaSuerte:7] as JSON)
     }
 }
