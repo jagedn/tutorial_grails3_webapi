@@ -1,5 +1,7 @@
-# tutorial_grails3_webapi
-Tutorial de ejemplo: Mi primera aplicación rest con grails 3
+# Mi primera aplicación rest con Grails 3: Spanish tutorial
+
+Tutorial de ejemplo, desarrollando una aplicación rest-api con grails 3. Si quieres colaborar u opinar, escríbeme:  [@rafbermudez](http://twitter.com/rafbermudez)
+
 
 ## Creando la aplicación
 Veamos los perfiles disponibles en grails 3 para el esqueleto inicial de una aplicación.
