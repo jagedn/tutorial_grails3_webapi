@@ -316,5 +316,8 @@ class BootStrap {
     }
 }
 ```
+Al arrancar la aplicación vemos el resumen en la consola
+## La lógica de negocio, los servicios y los controladores
+Grails proporciona una capa de servicios para alojar la lógica de negocio, con capacidades transaccionales y fácilmente testeable. Aunque nada nos impide meterla directamente en los controladores, decide el programador. Ojo, meter la lógica de negocio en los controladores es una mala práctica reconocida.
 
 ## En construcción ... el viernes estará completo
