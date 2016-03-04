@@ -3,8 +3,8 @@ package gente
 class Nariz {
     
     Persona persona
-    Float alturaEnCm
-    Float anchoEnCm
+    Float cmAlto
+    Float cmAncho
 
     static constraints = {
     }
