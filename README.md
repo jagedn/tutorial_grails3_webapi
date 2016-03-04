@@ -320,4 +320,74 @@ Al arrancar la aplicación vemos el resumen en la consola
 ## La lógica de negocio, los servicios y los controladores
 Grails proporciona una capa de servicios para alojar la lógica de negocio, con capacidades transaccionales y fácilmente testeable. Aunque nada nos impide meterla directamente en los controladores, decide el programador. Ojo, meter la lógica de negocio en los controladores es una mala práctica reconocida.
 
+Creamos nuestro servicio Gente, y le añadimos 2 funciones
+```
+grails create-service gente.Gente
+| Created grails-app/services/gente/GenteService.groovy
+| Created src/test/groovy/gente/GenteServiceSpec.groovy
+```
+```groovy
+package gente
+
+import grails.transaction.Transactional
+
+@Transactional
+class GenteService {
+
+    @Transactional(readOnly = true) //No transaccional
+    Persona getElena() {
+        return Persona.findByNombre("Elena")
+    }
+    
+    
+    @Transactional(readOnly = true) //No transaccional
+    List<Pelo> get5PrimerosPelosFromPersona(Persona persona) {
+        return Pelo.findAllByPersona(persona, [max: 5, sort: "id", order: "asc"])
+    }
+}
+```
+Sustituímos en el controlador el código antiguo por la llamada getElena() del servicio. Ahora ya está unido a los datos persistidos en BD. Si ejecutamos la aplicación accediendo a los endpoints veremos el resultado
+```groovy
+package tutorial_grails3_webapi
+
+import gente.Persona
+import grails.converters.JSON
+
+class ApplicationController{
+    
+    def genteService
+    
+    //generado con una vista
+    def index() {
+        
+        print genteService.get5PrimerosPelosFromPersona(genteService.getElena())
+        //la pasamos como parámetro a la vista
+        // por convención la vista de index() -> index.gson
+        [persona: genteService.getElena()]
+    }
+    
+    //generado por conversión
+    def elena() {   
+        render genteService.getElena() as JSON
+    }
+    
+    //generado a partir de un mapa
+    def mapa() {
+        
+        def m = [
+            nombre:"Aitor", 
+            apellido:"Nillos", 
+            numeroDeLaSuerte:7,
+            direcciones:[
+                dir1:"calle sdfsd",
+                dir2:"calle xsdfasd"
+            ]
+        ]
+        
+        render (m as JSON)
+    }
+}
+```
+
+
 ## En construcción ... el viernes estará completo
