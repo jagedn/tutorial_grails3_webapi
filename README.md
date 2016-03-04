@@ -181,4 +181,88 @@ Ejecutemos la aplicación. Tal como está configurado el UrlMappings, http://loc
 
 Resumiendo, Grails es superpotente y es idóneo para realizar APIS. Tiene muchísimas facilidades para exponer objetos, podéis echar un ojo en [la sección REST de la documentación oficial](https://grails.github.io/grails-doc/3.1.2/guide/webServices.html).
 
+## Construyendo un modelo
+
+Ya hemos creado la clase de dominio Persona. Recordemos que una clase de dominio es una clase especial de Grails que se mapea a BD. ¿Qué más puede tener una persona? Pues una nariz, 20 dedos y una cantidad alta e indeterminada de pelos.
+* Persona - Nariz (relación one-to-one)
+* Persona - Dedo (relación one-to-many 0..20)
+* Persona - Pelo (relación one-to-many)
+
+Clase Nariz:
+```
+$ grails create-domain-class gente.Nariz
+| Created grails-app/domain/gente/Nariz.groovy
+| Created src/test/groovy/gente/NarizSpec.groovy
+```
+```groovy
+package gente
+
+class Nariz {
+    
+    Persona persona
+    Float alturaEnCm
+    Float anchoEnCm
+
+    static constraints = {
+    }
+}
+```
+Clase Dedo:
+```
+$ grails create-domain-class gente.Dedo
+| Created grails-app/domain/gente/Dedo.groovy
+| Created src/test/groovy/gente/DedoSpec.groovy
+```
+```groovy
+package gente
+
+class Dedo {
+    
+    Persona persona
+    Float longitud
+
+    static constraints = {
+    }
+}
+```
+Clase Pelo:
+```
+$ grails create-domain-class gente.Pelo
+| Created grails-app/domain/gente/Pelo.groovy
+| Created src/test/groovy/gente/PeloSpec.groovy
+```
+```groovy
+package gente
+
+class Pelo {
+    
+    Persona persona
+    Boolean esCanoso
+
+    static constraints = {
+    }
+}
+```
+Cada tabla generada tiene la FK y las relaciones son unidireccionales. Desde Nariz, Pelo o Dedo podemos navegar a Persona pero Persona no conoce la existencia de estas. Editemos Persona:
+```groovy
+package gente
+
+class Persona {
+    
+    String nombre
+    String apellidos
+    String direccion
+    Integer telefono
+    
+    static hasOne = [nariz: Nariz]
+    static hasMany= [dedos: Dedo, pelos: Pelo]
+
+
+    static constraints = {
+        dedos(maxSize: 20)
+    }
+}
+```
+Ahora las relaciones ya son bidireccionales.
+
 ## En construcción ... el viernes estará completo
