@@ -28,6 +28,17 @@ class ApplicationController{
     
     //generado a partir de un mapa
     def mapa() {
-        render ([nombre:"Aitor", apellido:"Nillos", numeroDeLaSuerte:7] as JSON)
+        
+        def m = [
+            nombre:"Aitor", 
+            apellido:"Nillos", 
+            numeroDeLaSuerte:7,
+            direcciones:[
+                dir1:"calle sdfsd",
+                dir2:"calle xsdfasd"
+            ]
+        ]
+        
+        render (m as JSON)
     }
 }
