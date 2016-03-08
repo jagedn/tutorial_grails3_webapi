@@ -1,6 +1,8 @@
 # Mi primera aplicación rest con Grails 3
 
-Tutorial de ejemplo, desarrollando una aplicación rest-api con grails 3. Si quieres colaborar u opinar, escríbeme:  [@rafbermudez](http://twitter.com/rafbermudez)
+Tutorial de ejemplo, desarrollando una aplicación rest-api con grails 3. Si quieres colaborar u opinar, escríbenos: 
+[@jagedn](https://twitter.com/jagedn)
+[@rafbermudez](http://twitter.com/rafbermudez)
 
 
 ## Creando la aplicación
