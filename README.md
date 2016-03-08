@@ -392,4 +392,4 @@ class ApplicationController{
 ```
 
 
-## En construcción ... el viernes estará completo
+## En construcción ... el viernes estará completo o el domingo lo más tardar
