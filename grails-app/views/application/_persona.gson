@@ -1,0 +1,10 @@
+import gente.Persona
+
+model {
+    Persona persona
+}
+
+json{
+    nombre persona.nombre
+    telefono persona.telefono
+}

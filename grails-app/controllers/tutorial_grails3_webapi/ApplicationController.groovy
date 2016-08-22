@@ -13,7 +13,7 @@ class ApplicationController{
         print genteService.get5PrimerosPelosFromPersona(genteService.getElena())
         //la pasamos como parámetro a la vista
         // por convención la vista de index() -> index.gson
-        [persona: genteService.getElena()]
+        [persona: genteService.getElena(), list1:Persona.list()]
     }
     
     //generado por conversión

@@ -1,6 +1,7 @@
 
 model{
     Persona persona
+    List<Persona> list1
 }
 
 json {
@@ -9,5 +10,7 @@ json {
     persona {
         nombre persona.nombre
         telefono persona.telefono
-    }    
+    }
+
+    personas tmpl.persona(list1)
 }
